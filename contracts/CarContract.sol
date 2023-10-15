@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 import "hardhat/console.sol";
 
 
-contract CarOwnership {
+contract CarContract {
     address public manufacturer;
     address payable public currentOwner;
     address payable public newOwner;
@@ -13,7 +13,7 @@ contract CarOwnership {
     enum State { Created, RequestedSale, Approved, Completed }
     State public state;
 
-    event CarOwnershipCreated(address manufacturer);
+    event CarContractCreated(address manufacturer);
     event OwnershipRequested(address payable newOwner, uint carValue);
     event OwnershipApproved(address payable newOwner);
     event OwnershipCompleted(address payable newOwner, uint carValue);
@@ -32,7 +32,7 @@ contract CarOwnership {
         manufacturer = msg.sender;
         currentOwner = payable(_currentOwner);
         state = State.Created;
-        emit CarOwnershipCreated(manufacturer);
+        emit CarContractCreated(manufacturer);
         carValue = _carValue;
     }
 
